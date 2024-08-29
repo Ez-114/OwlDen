@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Environment files
+.env
+
+# Database
+*.sqlite3
+*.json
+
+# Logs
+*.log
+
+# Ignore node_modules for JS projects
+node_modules/

@@ -21,3 +21,7 @@ class User(BaseModel):
     password = ""
     first_name = ""
     last_name = ""
+    date_joined = None
+    date_of_birth = None
+    last_login = None
+    role = ""

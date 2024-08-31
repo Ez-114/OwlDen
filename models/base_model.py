@@ -1,5 +1,5 @@
 """
-models.base_models.py Module.
+models.base_models Module.
 
 This module defines the BaseModel class in the models package
 that serves as a base class for all other models.

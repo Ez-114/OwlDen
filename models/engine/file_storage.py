@@ -80,6 +80,12 @@ class FileStorage:
         (only if the JSON file (__file_path) exists ; otherwise, do nothing.)
         """
         from models.base_model import BaseModel
+        from models.user import User
+
+        classes_dict = {
+            'BaseModel': BaseModel,
+            'User': User
+        }
 
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, mode='r', encoding='utf-8') \
@@ -89,4 +95,6 @@ class FileStorage:
 
             # Now fill in the __objects dict with loaded objects
             for obj_id, obj_data in loaded_objs.items():
-                FileStorage.__objects.update({obj_id: BaseModel(**obj_data)})
+                FileStorage.__objects.update({
+                        obj_id: classes_dict[obj_data['__class__']](**obj_data)
+                    })

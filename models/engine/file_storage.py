@@ -81,10 +81,18 @@ class FileStorage:
         """
         from models.base_model import BaseModel
         from models.user import User
+        from models.author import Author
+        from models.book import Book
+        from models.genre import Genre
+        from models.publisher import Publisher
+        from models.rate import Rate
+        from models.review import Review
 
         classes_dict = {
-            'BaseModel': BaseModel,
-            'User': User
+            'BaseModel': BaseModel, 'User': User,
+            'Author': Author, 'Publisher': Publisher,
+            'Book': Book, 'Rate': Rate,
+            'Review': Review, 'Genre': Genre
         }
 
         if os.path.exists(FileStorage.__file_path):

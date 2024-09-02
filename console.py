@@ -7,9 +7,16 @@ Contains the entry point of the command interpreter.
 
 import cmd
 
+from models import storage
+
 from models.base_model import BaseModel
 from models.user import User
-from models import storage
+from models.author import Author
+from models.book import Book
+from models.genre import Genre
+from models.publisher import Publisher
+from models.rate import Rate
+from models.review import Review
 
 
 class OwlDenCommand(cmd.Cmd):
@@ -20,7 +27,10 @@ class OwlDenCommand(cmd.Cmd):
     """
 
     prompt = "(OwlDen) "
-    classes_list = ['BaseModel', 'User']
+    classes_list = [
+        'BaseModel', 'User', 'Author', 'Book',
+        'Genre', 'Publisher', 'Rate', 'Review'
+    ]
 
     def do_create(self, line):
         """
@@ -29,8 +39,9 @@ class OwlDenCommand(cmd.Cmd):
         """
 
         classes_dict = {
-            'BaseModel': BaseModel,
-            'User': User
+            'BaseModel': BaseModel, 'User': User, 'Author': Author,
+            'Publisher': Publisher, 'Book': Book, 'Rate': Rate,
+            'Review': Review, 'Genre': Genre
         }
 
         if not line:

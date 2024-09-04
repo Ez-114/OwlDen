@@ -20,14 +20,16 @@ its timestamps.
 """
 
 
-from uuid import uuid4
-from datetime import datetime
 from copy import deepcopy
+from datetime import datetime
+from sqlalchemy import Column, String, DateTime
+from sqlalchemy.orm import DeclarativeBase
+from uuid import uuid4
 
 from models import storage
 
 
-class BaseModel:
+class BaseModel(DeclarativeBase):
     """
     BaseModel class.
 
@@ -35,6 +37,16 @@ class BaseModel:
     attributes and methods for other model classes.
     """
 
+    # Mark this class as an abstract class
+    __abstract__ = True
+
+    # Define common columns
+    id = Column(String(60), primary_key=True, default=lambda: str(uuid4()))
+    created_at = Column(DateTime, default=datetime.now, nullable=False)
+    updated_at = Column(DateTime,
+                        default=datetime.now,
+                        onupdate=datetime.now,
+                        nullable=False)
 
     def __init__(self, *_, **kwargs):
         """

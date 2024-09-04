@@ -37,7 +37,8 @@ class User(BaseModel):
     last_login = Column(DateTime, default=datetime.now, nullable=False)
     role = Column(Enum(UserRole), default=UserRole.USER, nullable=False)
 
-    ratings = relationship('Rate', back_populates='user')
+    usr_ratings = relationship('Rate', back_populates='user')
+    usr_reviews = relationship('Review', back_populates='user')
 
     def __init__(self, *_, **kwargs):
         """Calls the super class init"""

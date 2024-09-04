@@ -6,7 +6,8 @@ inherits from the models.BaseModel class model.
 """
 
 import enum
-from sqlalchemy import Column, String, DateTime, Enum
+from sqlalchemy import Column, String, DateTime, Date, Enum
+from sqlalchemy.orm import relationship
 from datetime import datetime
 
 from models.base_model import BaseModel
@@ -32,9 +33,11 @@ class User(BaseModel):
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=False)
     last_name = Column(String(128), nullable=False)
-    date_of_birth = Column(DateTime, nullable=True)
+    date_of_birth = Column(Date, nullable=True)
     last_login = Column(DateTime, default=datetime.now, nullable=False)
     role = Column(Enum(UserRole), default=UserRole.USER, nullable=False)
+
+    ratings = relationship('Rate', back_populates='user')
 
     def __init__(self, *_, **kwargs):
         """Calls the super class init"""

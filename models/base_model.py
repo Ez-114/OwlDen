@@ -19,8 +19,6 @@ unique ids. It also uses the datetime package to give each instance
 its timestamps.
 """
 
-
-from copy import deepcopy
 from datetime import datetime
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.orm import DeclarativeBase
@@ -65,7 +63,7 @@ class BaseModel(DeclarativeBase):
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
-            self.updated_at = deepcopy(self.created_at)
+            self.updated_at = self.created_at
 
     def save(self):
         """

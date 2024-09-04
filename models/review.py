@@ -9,6 +9,7 @@ from sqlalchemy import Column, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
 
 from models.base_model import BaseModel
+from models.association_tables import book_review_jt
 
 
 class Review(BaseModel):
@@ -23,7 +24,12 @@ class Review(BaseModel):
     user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
     review_text = Column(Text, nullable=False)
 
-    user = relationship('User', back_populates='usr_reviews')
+    user = relationship('User', back_populates='user_reviews')
+    book = relationship(
+            'Book',
+            secondary=book_review_jt,
+            back_populates='bool_reviews'
+        )
 
     def __init__(self, *_, **kwargs):
         """Calls the super class init"""

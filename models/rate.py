@@ -9,6 +9,7 @@ from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 
 from models.base_model import BaseModel
+from models.association_tables import book_rate_jt
 
 
 class Rate(BaseModel):
@@ -24,6 +25,11 @@ class Rate(BaseModel):
     rating_value = Column(Integer, nullable=False, default=0)
 
     user = relationship('User', back_populates='user_ratings')
+    book = relationship(
+            'Book',
+            secondary=book_rate_jt,
+            back_populates='book_rates'
+        )
 
     def __init__(self, *_, **kwargs):
         """Calls the super class init"""

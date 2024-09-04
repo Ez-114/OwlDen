@@ -28,7 +28,7 @@ class User(BaseModel):
 
     __tablename__ = 'users'
 
-    email = Column(String(100), nullable=False, unique=True)
+    email = Column(String(128), nullable=False, unique=True)
     user_name = Column(String(50), nullable=False, unique=True)
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=False)
@@ -37,8 +37,8 @@ class User(BaseModel):
     last_login = Column(DateTime, default=datetime.now, nullable=False)
     role = Column(Enum(UserRole), default=UserRole.USER, nullable=False)
 
-    usr_ratings = relationship('Rate', back_populates='user')
-    usr_reviews = relationship('Review', back_populates='user')
+    user_ratings = relationship('Rate', back_populates='user')
+    user_reviews = relationship('Review', back_populates='user')
 
     def __init__(self, *_, **kwargs):
         """Calls the super class init"""

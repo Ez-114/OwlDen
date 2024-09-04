@@ -66,7 +66,6 @@ class BaseModel(DeclarativeBase):
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = deepcopy(self.created_at)
-            storage.new(self)
 
     def save(self):
         """
@@ -77,6 +76,7 @@ class BaseModel(DeclarativeBase):
         """
 
         self.updated_at = datetime.now()
+        storage.new(self)
         storage.save()
 
     def to_dict(self):

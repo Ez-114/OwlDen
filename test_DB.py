@@ -1,19 +1,12 @@
 from models.user import User
-from datetime import datetime
-
-new_instance = User(
-    first_name='Ezz',
-    last_name='Morgan',
-    email='ezzmorgan94@gmail.com',
-    password='ezz1144',
-    user_name='emorg',
-    date_of_birth=datetime(2004, 1, 1).date()
-)
-
-new_instance.save()
+# from models.rate import Rate
+# from models.book import Book
+# from datetime import datetime
 
 from models import storage
 
-res = storage.all('User')
-for i in res:
-    print(i)
+session = storage.session
+q_res = session.query(User).all()
+
+for entry in q_res:
+    print(entry.first_name, entry.last_name)

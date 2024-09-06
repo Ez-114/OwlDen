@@ -22,6 +22,7 @@ class Rate(BaseModel):
     __tablename__ = 'rates'
 
     user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+    book_id = Column(String(60), ForeignKey('books.id'), nullable=False)
     rating_value = Column(Integer, nullable=False, default=0)
 
     user = relationship('User', back_populates='user_ratings')

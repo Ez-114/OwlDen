@@ -24,7 +24,7 @@ class DBstorage():
     """A storage class that interacts with the MySQL Server"""
 
     __engine = None
-    __session = None
+    session = None
     __classes_dict = {
         'Author': Author, 'Book': Book,
         'Genre': Genre, 'Publisher': Publisher,
@@ -36,7 +36,7 @@ class DBstorage():
         """Initializes the engine variable and apply environment configs"""
 
         self.__engine = create_engine(
-            'sqlite:///:memory:', echo=True
+            'mysql+pymysql://owlden_test:OwlDen98_test1_pwd@localhost/owlden_test_db', echo=True
         )
 
     def all(self, cls=None):
@@ -56,7 +56,7 @@ class DBstorage():
         obj_dict = {}
 
         if cls and cls in self.__classes_dict:
-            objects_q = self.__session.query(self.__classes_dict[cls]).all()
+            objects_q = self.session.query(self.__classes_dict[cls]).all()
 
             for obj in objects_q:
                 obj_key = f"{obj.__class__.__name__}.{obj.id}"
@@ -65,7 +65,7 @@ class DBstorage():
         elif cls is None:
 
             for class_name in self.__classes_dict.keys():
-                objects_q = self.__session.query(
+                objects_q = self.session.query(
                                     self.__classes_dict[class_name]
                             ).all()
 
@@ -83,14 +83,14 @@ class DBstorage():
             obj (object) - the passed object
         """
 
-        self.__session.add(obj)
+        self.session.add(obj)
 
     def save(self):
         """
         Save/Commit the new added object(s) to in the session object.
         """
 
-        self.__session.commit()
+        self.session.commit()
 
     def delete(self, obj=None):
         """
@@ -101,7 +101,7 @@ class DBstorage():
         """
 
         if obj:
-            self.__session.delete(obj)
+            self.session.delete(obj)
 
     def reload(self):
         """
@@ -112,4 +112,4 @@ class DBstorage():
 
         factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(factory)
-        self.__session = Session()
+        self.session = Session()

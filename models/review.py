@@ -22,6 +22,7 @@ class Review(BaseModel):
     __tablename__ = 'reviews'
 
     user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+    book_id = Column(String(60), ForeignKey('books.id'), nullable=False)
     review_text = Column(Text, nullable=False)
 
     user = relationship('User', back_populates='user_reviews')

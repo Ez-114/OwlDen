@@ -24,8 +24,6 @@ from sqlalchemy import Column, String, DateTime
 from sqlalchemy.orm import DeclarativeBase
 from uuid import uuid4
 
-from models import storage
-
 
 class BaseModel(DeclarativeBase):
     """
@@ -72,6 +70,7 @@ class BaseModel(DeclarativeBase):
         Updates the public instance attribute `updated_at` with the current
         new timestamp.
         """
+        from models import storage
 
         self.updated_at = datetime.now()
         storage.new(self)

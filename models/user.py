@@ -28,11 +28,11 @@ class User(BaseModel):
 
     __tablename__ = 'users'
 
-    email = Column(String(128), nullable=False, unique=True)
-    user_name = Column(String(50), nullable=False, unique=True)
-    password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=False)
     last_name = Column(String(128), nullable=False)
+    email = Column(String(128), nullable=False, unique=True)
+    password = Column(String(128), nullable=False)
+    user_name = Column(String(50), nullable=False, unique=True)
     date_of_birth = Column(Date, nullable=True)
     last_login = Column(DateTime, default=datetime.now, nullable=False)
     role = Column(Enum(UserRole), default=UserRole.USER, nullable=False)

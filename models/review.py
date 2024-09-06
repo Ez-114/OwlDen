@@ -28,7 +28,7 @@ class Review(BaseModel):
     book = relationship(
             'Book',
             secondary=book_review_jt,
-            back_populates='bool_reviews'
+            back_populates='book_reviews'
         )
 
     def __init__(self, *_, **kwargs):

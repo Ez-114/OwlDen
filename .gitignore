@@ -5,7 +5,7 @@ test*.py
 *.egg-info/
 
 # Environment files
-.env
+.venv
 
 # Database
 *.sqlite3

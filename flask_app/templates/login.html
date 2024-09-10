@@ -1,46 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Olden - Book Reviews</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/general.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login_page.css') }}" />
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="logo">
-        <a href="#">Olden</a>
-      </div>
-      <div class="nav-links">
-        <a href="#">Authors</a>
-        <a href="#">Publishers</a>
-        <a href="#">Contact</a>
-      </div>
-      <div class="nav-user">
-        <a href="#">Login</a>
-        <a href="#">Register</a>
-        <a href="#">Username</a>
-      </div>
-    </nav>
-
-    <div class="main-content">
-      <form action="" method="post">
-        <fieldset>
-          <legend>Login</legend>
-          <label for="email">E-mail</label> <br />
-          <input type="email" name="email" id="email" />
-          <br />
-          <label for="password">password</label> <br />
-          <input type="password" name="password" id="password" />
-          <br />
-          <input type="submit" value="Login" />
-          <small>
-            <p>
-              Don't have an account? <a href="./register.html">Register now.</a>
-            </p>
-          </small>
-        </fieldset>
-      </form>
-    </div>
-  </body>
-</html>
+{% extends "base.html" %} {% block styles %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/login_page.css') }}"
+/>
+{% endblock %} {% block main_content %}
+<div class="main-content">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <ul class="flashes">
+    {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+  <form action="" method="post">
+    <fieldset>
+      <legend>Login</legend>
+      <label for="email">E-mail</label> <br />
+      <input type="email" name="email" id="email" />
+      <br />
+      <label for="password">password</label> <br />
+      <input type="password" name="password" id="password" />
+      <br />
+      <input type="submit" value="Login" />
+      <small>
+        <p>
+          Don't have an account?
+          <a href="{{ url_for('register') }}">Register now.</a>
+        </p>
+      </small>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}

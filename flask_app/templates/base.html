@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Olden - Book Reviews</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/general.css') }}"
+    />
+    {% block styles %}{% endblock %}
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">Olden</a>
+      </div>
+      <div class="nav-links">
+        <a href="#">Authors</a>
+        <a href="#">Publishers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="nav-user">
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+        <a href="#">Username</a>
+      </div>
+    </nav>
+    {% block main_content %}{% endblock %}
+  </body>
+</html>

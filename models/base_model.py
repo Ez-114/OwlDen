@@ -74,7 +74,7 @@ class BaseModel(DeclarativeBase):
 
         self.updated_at = datetime.now()
         storage.new(self)
-        #storage.save()
+        storage.save()
 
     def to_dict(self):
         """

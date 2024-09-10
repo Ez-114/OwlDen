@@ -1,0 +1,36 @@
+form {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+fieldset {
+  padding: 10px;
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  border-style: solid;
+  border-radius: 3px;
+  padding: 6px 10px;
+  margin: 8px 0;
+  font-size: medium;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #04aa6d;
+  margin: auto;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+small {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}

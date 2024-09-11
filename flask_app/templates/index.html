@@ -1,108 +1,43 @@
-{% extends 'base.html' %}
-
-{% block styles %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main_page.css') }}" />
-{% endblock %}
-
-{% block main_content %}
-  <div class="main-content">
-    <div class="welcome-txt">
-      <h2>Welcome to OwlDen! 🦉 - Your Book Review Hub</h2>
-      <p>
-        We're thrilled to have you join our community of book lovers. At
-        OwlDen, we believe that every book has a story to tell, and we're here
-        to help you discover, rate, and review your next great read. Whether
-        you're searching for a hidden gem or want to share your thoughts on a
-        recent page-turner, you've come to the right place.
-      </p>
-      <p>
-        Dive into the world of books, connect with fellow readers, and let
-        your literary journey begin. Remember, the wise owl is always here to
-        guide you through the endless stacks of stories. Happy reading!
-      </p>
-    </div>
-
-    <div class="welcome-books">
-      <div class="book">
-        <img src="./images/logo-white.png" alt="">
-        <a href="#">
-          <h3>Book Title 1</h3>
-        </a>
-        <p><strong>Author:</strong> John Doe</p>
-        <p><strong>Genre:</strong> Fiction</p>
-      </div>
-
-      <div class="book">
-        <img src="./images/logo-white.png" alt="">
-        <a href="#">
-          <h3>Book Title 2</h3>
-        </a>
-        <p><strong>Author:</strong> Jane Smith</p>
-        <p><strong>Genre:</strong> Mystery</p>
-      </div>
-
-      <div class="book">
-        <img src="./images/logo-white.png" alt="">
-        <a href="#">
-          <h3>Book Title 3</h3>
-        </a>
-        <p><strong>Author:</strong> Alice Johnson</p>
-        <p><strong>Genre:</strong> Sci-Fi</p>
-      </div>
-
-      <div class="book">
-        <img src="./images/logo-white.png" alt="">
-        <a href="#">
-          <h3>Book Title 4</h3>
-        </a>
-        <p><strong>Author:</strong> Alice Johnson</p>
-        <p><strong>Genre:</strong> Sci-Fi</p>
-      </div>
-
-      <div class="book">
-        <img src="./images/logo-white.png" alt="">
-        <a href="#">
-          <h3>Book Title 5</h3>
-        </a>
-        <p><strong>Author:</strong> Alice Johnson</p>
-        <p><strong>Genre:</strong> Sci-Fi</p>
-      </div>
-
-      <div class="book">
-        <img src="./images/logo-white.png" alt="">
-        <a href="#">
-          <h3>Book Title 6</h3>
-        </a>
-        <p><strong>Author:</strong> Alice Johnson</p>
-        <p><strong>Genre:</strong> Sci-Fi</p>
-      </div>
-
-      <div class="book">
-        <img src="./images/logo-white.png" alt="">
-        <a href="#">
-          <h3>Book Title 7</h3>
-        </a>
-        <p><strong>Author:</strong> Alice Johnson</p>
-        <p><strong>Genre:</strong> Sci-Fi</p>
-      </div>
-
-      <div class="book">
-        <img src="./images/logo-white.png" alt="">
-        <a href="#">
-          <h3>Book Title 8</h3>
-        </a>
-        <p><strong>Author:</strong> Alice Johnson</p>
-        <p><strong>Genre:</strong> Sci-Fi</p>
-      </div>
-
-      <div class="book">
-        <img src="./images/logo-white.png" alt="">
-        <a href="#">
-          <h3>Book Title 9</h3>
-        </a>
-        <p><strong>Author:</strong> Alice Johnson</p>
-        <p><strong>Genre:</strong> Sci-Fi</p>
-      </div>
-    </div>
+{% extends 'base.html' %} {% block styles %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/main_page.css') }}"
+/>
+{% endblock %} {% block main_content %}
+<div class="main-content">
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %}
+  <ul class="flashes">
+    {% for category, message in messages %} {% if category == 'logout' %}
+    <li>{{ message }}</li>
+    {% endif %} {% endfor %}
+  </ul>
+  {% endif %} {% endwith %}
+  <div class="welcome-txt">
+    <h2>Welcome to OwlDen! 🦉 - Your Book Review Hub</h2>
+    <p>
+      We're thrilled to have you join our community of book lovers. At OwlDen,
+      we believe that every book has a story to tell, and we're here to help you
+      discover, rate, and review your next great read. Whether you're searching
+      for a hidden gem or want to share your thoughts on a recent page-turner,
+      you've come to the right place.
+    </p>
+    <p>
+      Dive into the world of books, connect with fellow readers, and let your
+      literary journey begin. Remember, the wise owl is always here to guide you
+      through the endless stacks of stories. Happy reading!
+    </p>
   </div>
+
+  <div class="welcome-books">
+    {% for book in books %}
+    <div class="book">
+      <img src="{{ book.cover_image_url }}" alt="cover image" />
+      <a href="{{ url_for('book_details', book_id=book.id) }}">
+        <h3>{{ book.title }}</h3>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}

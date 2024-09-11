@@ -5,15 +5,14 @@
 />
 {% endblock %} {% block main_content %}
 <div class="main-content">
-  {% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %}
   <ul class="flashes">
     {% for category, message in messages %}
     <li class="{{ category }}">{{ message }}</li>
     {% endfor %}
   </ul>
-  {% endif %}
-  {% endwith %}
+  {% endif %} {% endwith %}
   <form action="" method="post">
     <fieldset>
       <legend>Login</legend>

@@ -1,0 +1,53 @@
+.book-details {
+  height: 80vh;
+  display: flex;
+}
+
+.book-img {
+  width: 25vw;
+  height: 80vh;
+}
+
+.book-data {
+  margin-left: 20px;
+}
+
+.data-list {
+  list-style-type: none;
+}
+
+.data-element {
+  margin-top: 20px;
+}
+
+.book-description {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.add-review input {
+  margin-top: 10px;
+  border-style: solid;
+  border-radius: 3px;
+  padding: 6px 10px;
+  font-size: medium;
+  box-sizing: border-box;
+  background-color: #04aa6d;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#user_review {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  font-size: medium;
+  resize: none;
+}
+
+.user-review {
+  margin-top: 15px;
+}

@@ -21,9 +21,9 @@ class Publisher(BaseModel):
     __tablename__ = 'publishers'
 
     name = Column(String(128), nullable=False, unique=True)
-    address = Column(String(128), nullable=False)
-    website = Column(String(255), nullable=False, unique=True)
-    email = Column(String(128), nullable=False, unique=True)
+    address = Column(String(128))
+    website = Column(String(255))
+    email = Column(String(128))
 
     book = relationship(
                 'Book',

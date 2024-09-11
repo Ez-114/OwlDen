@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block styles %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/book_details_page.css') }}"
+/>
+{% endblock %} {% block main_content %}
+<div class="main-content">
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %}
+  <ul class="flashes">
+    {% for category, message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %} {% endwith %}
+  <div class="book-details">
+    <img class="book-img" src="{{ book.cover_image_url }}" alt="book image" />
+    <div class="book-data">
+      <ul class="data-list">
+        <li class="data-element">Title: {{ book.title }}</li>
+        <li class="data-element">ISBN: {{ book.isbn }}</li>
+        <li class="data-element">
+          Genre(s): {% for genre in book.book_genres %} {{ genre.name }}, {%
+          endfor %}
+        </li>
+        <li class="data-element">
+          Author(s): {% for author in book.book_authors %} {{ author.name }}, {%
+          endfor %}
+        </li>
+        <li class="data-element">
+          Publisher(s): {% for publisher in book.book_publishers %} {{
+          publisher.name }}, {% endfor %}
+        </li>
+        <li class="data-element">Publish date: {{ book.publish_date }}</li>
+        <li class="data-element">Average rating: {{ book.average_rating }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="book-description">{{ book.description }}</div>
+  <div class="book-reviews">
+    <form
+      class="add-review"
+      method="post"
+      action="{{ url_for ('add_review', book_id=book.id) }}"
+    >
+      <h3>Your Review</h3>
+      <input type="submit" value="Post" />
+      <textarea
+        name="user_review"
+        id="user_review"
+        cols="100"
+        rows="5"
+      ></textarea>
+    </form>
+    <hr />
+    {% for review in book.book_reviews %}
+    <div class="user-review">
+      <h3>{{ review.user.user_name }}</h3>
+      <p>{{ review.review_text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

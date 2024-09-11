@@ -23,7 +23,7 @@ class Author(BaseModel):
 
     name = Column(String(128), nullable=False, unique=True)
     bio = Column(Text, nullable=True)
-    date_of_birth = Column(Date, nullable=False)
+    date_of_birth = Column(Date, nullable=True)
     date_of_death = Column(Date, nullable=True)
 
     book = relationship(

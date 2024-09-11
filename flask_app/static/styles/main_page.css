@@ -1,11 +1,11 @@
 .welcome-books {
-    width: 100%;
-    height: 100%;
-    margin-top: 20px;
-    display: inline-grid;
-    gap: 50px;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  display: inline-grid;
+  gap: 50px;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
 }
 
 .book {
@@ -18,13 +18,13 @@
 }
 
 .book img {
-    width: 250px;
-    height: 270px;
+  width: 250px;
+  height: 270px;
 }
 
 .book a {
-    text-decoration: none;
-    color: #333;
+  text-decoration: none;
+  color: #333;
 }
 
 .book h3 {

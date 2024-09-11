@@ -12,17 +12,23 @@
   <body>
     <nav class="navbar">
       <div class="logo">
-        <a href="#">Olden</a>
+        <a href="{{ url_for('dash') }}">Olden</a>
       </div>
+      <!-- This will be added later
       <div class="nav-links">
         <a href="#">Authors</a>
         <a href="#">Publishers</a>
         <a href="#">Contact</a>
       </div>
+      -->
       <div class="nav-user">
+        {% if session.get('username') %}
+        <a href="#">Welcome {{ session['username'] }} </a>
+        <a href="{{ url_for('logout') }}">logout</a>
+        {% else %}
         <a href="{{ url_for('login') }}">Login</a>
         <a href="{{ url_for('register') }}">Register</a>
-        <a href="#">Username</a>
+        {% endif %}
       </div>
     </nav>
     {% block main_content %}{% endblock %}

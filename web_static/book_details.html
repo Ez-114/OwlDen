@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Olden - Book Reviews</title>
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/book_details_page.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">Olden</a>
+      </div>
+      <div class="nav-links">
+        <a href="#">Authors</a>
+        <a href="#">Publishers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="nav-user">
+        <a href="./login.html">Login</a>
+        <a href="#">Register</a>
+        <a href="#">Username</a>
+      </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="book-details">
+            <img class="book-img" src="./images/logo-white.png" alt="book image">
+            <div class="book-data">
+                <ul class="data-list">
+                    <li class="data-element">Title: BOOK TITLE</li>
+                    <li class="data-element">ISBN: 1234567890123</li>
+                    <li class="data-element">Genre(s): hrorr, romance, drama</li>
+                    <li class="data-element">Author(s): Ezz Morgan</li>
+                    <li class="data-element">Publisher(s): Morgan Company</li>
+                    <li class="data-element">Publish date: 1/1/2004</li>
+                    <li class="data-element">Average rating: 5</li>
+                    <li class="data-element">Your Rating: 2</li>
+                </ul>
+            </div>
+        </div>
+        <div class="book-description">
+            THis is book description.
+        </div>
+        <div class="book-reviews">
+            <form class="add-review" method="post">
+                <h3>Your Review</h3>
+                <input type="submit" value="Post">
+                <textarea name="user_review" id="user_review" cols="100" rows="5"></textarea>
+            </form>
+            <hr />
+            <div class="user-review">
+                <h3>UserName</h3>
+                <p>
+                    This was a grate book to read I hope it satisfies every other one.
+                </p>
+            </div>
+            <div class="user-review">
+                <h3>UserName</h3>
+                <p>
+                    This was a grate book to read I hope it satisfies every other one.
+                </p>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
